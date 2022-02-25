@@ -111,7 +111,7 @@
       </h2>
       <div class="poll-results">
         <p>
-          Submissions so far (see the <a href="/logs">Admin</a> page for a log):
+          Submissions so far (see the <a href="/logs">login</a> page for a log):
         </p>
         <p>
           <!-- Pass arrays from the API to the chart script in page head -->
@@ -125,18 +125,7 @@
       
       {{else}}
       <div class="poll-form">
-        <!-- Call the server post endpoint when the user submits an option in the poll -->
-        <form method="post" action="/">
-          <!-- The server script returns the list of language options to offer in the poll -->
-          {{#each optionNames}}
-          <input type="radio" id="{{this}}" name="language" value="{{this}}" required />
-          <label for="{{this}}">{{this}}</label>
-          {{/each}}
-          <br /><br />
-          <button type="submit">
-            Submit
-          </button>
-        </form>
+      
         <!-- ADD LINK FROM TODO -->
         
       </div>
