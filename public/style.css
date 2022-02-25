@@ -8,14 +8,29 @@ to this section's matching END comment to see page-specific styles.
 ******************************************************************************/
 /* Our default values set as CSS variables */
 :root {
-  --color-bg: #FFE6F8;
+  --cor-padrao: linear-gradient(45deg, cyan, purple);
   --color-text-main: #000000;
-  --color-primary: #D7F5EF;
-  --wrapper-height: 87vh;
-  --image-max-width: 300px;
-  --image-margin: 3rem;
-  --font-family: "HK Grotesk";
-  --font-family-header: "HK Grotesk";
+  --color-primary: #FFFF00;
+  --wrapper-altura: 87vh;
+  --image-max-largura: 400px;
+  --image-margin: 1rem;
+  --font-principal: "Arial";
+  --font-family-cabecalho: "Arial";
+  --max-largura: 144px;
+  --max-altura: 544px;
+  --max-peso: 500;
+  --font-tamanho: 15px;
+  --font-tamanho-cabecalho: 20px;
+  --fundo-padrao: white;
+  --negrito: bold;
+  --espaco-em-branco: nowrap;
+  --X: 0px;
+  --Y: 390px;
+ 
+  --height: "altuta";
+  --Weight: "peso";
+  --width: "largura";
+  --white-space: "espaco em branco";   
 }
 
 /* Basic page style resets */
@@ -40,61 +55,36 @@ to this section's matching END comment to see page-specific styles.
 }
 
 /* Our remix on glitch button */
-.btn--remix {
-  font-family: HK Grotesk;
-  padding: 0.75rem 1rem;
-  font-size: 1.1rem;
-  line-height: 1rem;
-  font-weight: 500;
-  height: 2.75rem;
-  align-items: center;
-  cursor: pointer;
-  background: #FFFFFF;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 4px;
-  text-decoration: none;
-  color: #000;
-  white-space: nowrap;
-  margin-left: auto;
-}
 .btn--remix img {
   margin-right: 0.5rem;
 }
-.btn--remix:hover {
-  background-color: #D0FFF1;
+      .btnenviar{
+        background-color: purple;
+        border: none;
+        padding: 15px;
+        width: 100%;
+        border-radius: 15px;
+        color: white;
+        font-size: 15px;
 }
-
-/* Navigation grid */
-.footer {
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem auto 0;
-  padding: 1rem 0 0.75rem 0;
-  width: 100%;
-  flex-wrap: wrap;
-  border-top: 4px solid #fff;
+      .btnenviar:hover{
+        background-color: green;
+        cursor: pointer;
+        }
+      .btnvoltar{
+        background-color: white;
+        left:100%;
+        border: 5px solid black;
+        padding: 15px;
+        width: 100%;
+        border-radius: 15px;
+        color: white;
+        font-size: 15px;
 }
-
-.footer a:not(.btn--remix):link,
-a:not(.btn--remix):visited {
-  font-family: HK Grotesk;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 1.1rem;
-  color: #000;
-  text-decoration: none;
-  border-style: none;
-}
-.footer a:hover {
-  background: var(--color-primary);
-}
-
-.footer .links {
-  padding: 0.5rem 1rem 1.5rem;
-  white-space: nowrap;
-}
-
+      .btnvoltar:hover{
+        background-color: green;
+        cursor: pointer;
+        }
 .divider {
   padding: 0 1rem;
 }
@@ -102,14 +92,14 @@ a:not(.btn--remix):visited {
 END Glitch hello-app default styles
 ******************************************************************************/
 
-body {
-  font-family: HK Grotesk;
-  background-color: var(--color-bg);
-}
-
+body{
+      font-family: Arial, helvetica, sans-serif;
+       background-image: linear-gradient(45deg, cyan, purple);
+       width: 100%;
+     }
 /* Page structure */
 .wrapper {
-  min-height: var(--wrapper-height);
+  min-height: var(--wrapper-altura);
   display: grid;
   place-items: center;
   margin: 0 1rem;
@@ -117,12 +107,64 @@ body {
 .content {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  justify-content: left;
-  max-width: 600px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 100px;
+}
+/* Instructions */
+      .instructions{
+        margin: 1rem auto 0;
+}
+/* Very light scaling for our illustration */
+.title {
+  color: #2800FF;
+  font-family: var(--font-tamanho-cabecalho);
+  font-style: normal;
+  font-weight: var(--negrito);
+  font-size: 100px;
+  line-height: 105%;
+  margin: 0;
 }
 
-p,
+/* Very light scaling for our illustration */
+.illustration {
+  max-width: 100%;
+  max-height: var(--image-max-width);
+  margin-top: var(--image-margin);
+}
+
+/* Button - Add it from the README instructions */
+button,
+input {
+  font-family: inherit;
+  font-size: 100%;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  transition: 500ms;
+  border: 3px solid black;
+  
+}
+/* Subheading */
+h2 {
+  color: #2800FF;
+}
+
+/* Interactive image */
+.illustration:active {
+  transform: translateY(5px);
+}
+
+/* Button dip
+- Toggling this class on and off will move it down and up again
+- The button transition property above determines the speed of the translate (500ms)
+*/
+.dipped {
+  transform: translateY(5px);
+}
+        p,
 label {
   font-size: 1.25rem;
 }
@@ -130,7 +172,7 @@ label {
 /* Title h1 style */
 h1 {
   color: #2800FF;
-  font-family: HK Grotesk;
+  font-family: Arial;
   font-style: normal;
   font-weight: bold;
   font-size: 100px;
@@ -142,11 +184,6 @@ h1 {
 .illo-container {
   display: flex;
   justify-content: flex-end;
-}
-.illustration {
-  max-width: 100%;
-  max-height: 150px;
-  margin-top: 1rem;
 }
 
 /* Styles for our poll form and its results */
@@ -160,33 +197,14 @@ h1 {
   cursor: pointer;
   box-shadow: -8px 4px 20px var(--color-primary);
 }
-button,
-input {
-  font-family: inherit;
-  font-size: 100%;
-  background: #FFFFFF;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-}
-button {
-  cursor: pointer;
-}
 label {
   color: #000000;
   font-weight: bold;
 }
 
 /* Instructions */
-.instructions {
-  margin: 1rem auto 0;
-}
 .instructions p {
   font-size: 1rem;
-}
-h2 {
-  color: #2800FF;
 }
 
 /* Admin page */
