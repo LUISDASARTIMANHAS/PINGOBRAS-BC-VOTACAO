@@ -151,10 +151,10 @@ fastify.post("/reset", async (request, reply) => {
     !process.env.ADMIN_KEY ||
     request.body.key !== process.env.ADMIN_KEY
   ) {
-    console.error("Auth fail");
+    console.error("auth fail");
 
     // Auth failed, return the log data plus a failed flag
-    params.failed = "You entered invalid credentials!";
+    params.failed = "shenha invalida ou incorreta";
 
     // Get the log list
     params.optionHistory = await db.getLogs();
