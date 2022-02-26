@@ -154,7 +154,7 @@ fastify.post("/reset", async (request, reply) => {
     console.error("auth fail");
 
     // Auth failed, return the log data plus a failed flag
-    params.failed = "shenha invalida ou incorreta";
+    params.failed = "senha invalida ou incorreta";
 
     // Get the log list
     params.optionHistory = await db.getLogs();

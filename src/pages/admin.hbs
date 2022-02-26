@@ -68,9 +68,6 @@
           Limpe o histórico somente se tiver certeza absoluta! Isso não pode ser desfeito.
         
         </p>
-        <p>
-          Digite a senha:
-        </p>
         
         <!-- Server returns a failed flag if the submitted key doesn't match -->
         {{#if failed}}
@@ -78,7 +75,7 @@
           {{failed}}
         </p>
         {{/if}}
-        <input type="password" placeholder="senha" id="pass" name="key" required>
+        <input type="password" placeholder="Digite a senha" id="pass" name="key" required>
         <button type="submit">Limpar banco de dados</button>
       </form>
       {{/if}}
