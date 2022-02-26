@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT">
 
 <head>
 
@@ -13,7 +13,7 @@
   <link rel="icon" href="https://glitch.com/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Hello SQLite: Logs</title>
+  <title>BANCO DE DADOS/ARMAZENAMENTO</title>
 
   <!-- Import the webpage's stylesheet -->
   <link rel="stylesheet" href="/style.css" />
@@ -34,7 +34,7 @@
 
       <!-- The server script returns the logs in an array -->
       <p>
-        Each time you submit an option through the poll in the <a href="/">Home</a> page, the app will add it to the log. <em>Most recent records will be shown (max 20).</em>
+        Cada vez que você enviar uma opção através da enquete no <a href="/">Home</a> página, o aplicativo irá adicioná-lo ao log.<em>Os registros mais recentes serão mostrados (máximo 20).</em>
       </p>
       <!-- Write out a table row for each entry in the log array showing choice and timestamp -->
       {{#if optionHistory.length}}
@@ -62,14 +62,14 @@
       <!-- The user can clear the logs if they first set up an admin key in the env -->
       <form action="/reset" method="post">
         <h2>
-          Clear vote history
+          limpar banco de dados
         </h2>
         <p>
-          Clear the history only if you are absolutely sure! It cannot be undone.
+          Limpe o histórico somente se tiver certeza absoluta! Não pode ser desfeito.
           <em>(Check the README for instructions on setting up your admin key.)</em>
         </p>
         <p>
-          Enter your admin key to confirm:
+          Digite a senha:
         </p>
         
         <!-- Server returns a failed flag if the submitted key doesn't match -->
