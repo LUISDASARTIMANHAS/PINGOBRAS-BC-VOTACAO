@@ -147,10 +147,10 @@ fastify.post("/reset", async (request, reply) => {
   */
   if (
     !request.body.key ||
-    request.body.key.length < 1 ||
+    request.body.key.length < 4 ||
     !process.env.ADMIN_KEY ||
-    request.body.key !== process.env.ADMIN_KEY
-  ) {
+    request.body.key !== process.env.ADMIN_KEY) 
+  {
     console.error("auth fail");
 
     // Auth failed, return the log data plus a failed flag
@@ -158,9 +158,11 @@ fastify.post("/reset", async (request, reply) => {
 
     // Get the log list
     params.optionHistory = await db.getLogs();
-  } else {
+     } 
+  else {
     // We have a valid key and can clear the log
     params.optionHistory = await db.clearHistory();
+    params.true = "senha correta";
 
     // Check for errors - method would return false value
     params.error = params.optionHistory ? null : data.errorMessage;
