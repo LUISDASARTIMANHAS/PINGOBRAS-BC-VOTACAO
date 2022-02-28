@@ -1,39 +1,39 @@
-# TODO 🚧
+#TODO🚧
 
-The site __Admin__ page allows the user to clear the database of votes–but only if a valid key is provided. This is a simplified example of auth that checks if the user entered key matches the one in the `.env`.
+A página __Admin__ do site permite que o usuário limpe o banco de dados de votos – mas somente se uma chave válida for fornecida. Este é um exemplo simplificado de autenticação que verifica se a chave inserida pelo usuário corresponde à do `.env`.
 
-## Setting up your admin key
+## Configurando sua chave de administrador
 
-To set your app up to allow clearing the history:
+Para configurar seu aplicativo para permitir a limpeza do histórico:
 
-* In your `.env` file, find the variable named `ADMIN_KEY` and give it a text string as a value.
-* With the __Admin__ page open in the preview, enter the same value and hit the __Clear log history__ button–this time it should allow you to clear the history.
+* Em seu arquivo `.env`, encontre a variável chamada `ADMIN_KEY` e dê a ela uma string de texto como valor.
+* Com a página __Admin__ aberta na visualização, insira o mesmo valor e pressione o botão __Limpar histórico de log__ – desta vez, deve permitir que você limpe o histórico.
 
-See the `reset` endpoint in `server.js` to learn how this works.
+Consulte o endpoint `reset` em `server.js` para saber como isso funciona.
 
-## Keep going! 🚀
+## Continue! 🚀
 
-Your new site is all yours so it doesn't matter if you break it! Try making an edit.
+Seu novo site é todo seu, então não importa se você o quebrar! Tente fazer uma edição.
 
-Follow the steps to allow the user to view the results without first submitting a vote:
+Siga as etapas para permitir que o usuário visualize os resultados sem primeiro enviar um voto:
 
-The homepage shows votes cast so far when the user completes the poll, but you can allow them to see the chart straight away.
+A página inicial mostra os votos lançados até o momento quando o usuário conclui a enquete, mas você pode permitir que eles vejam o gráfico imediatamente.
 
-1. Add a link to `src/pages/index.hbs` after the form, which will send a query parameter to the server script:
+1. Adicione um link para `src/pages/index.hbs` após o formulário, que enviará um parâmetro de consulta para o script do servidor:
 
 ```
 <p>
- <a href="/?results=true">Show results</a>
+ <a href="/?results=true">Mostrar resultados</a>
 </p>
 ```
 
-2. Extend the `server.js` `GET` endpoint `/` to send a flag if the user requested the results:
+2. Estenda o ponto de extremidade `server.js` `GET` `/` para enviar um sinalizador se o usuário solicitou os resultados:
 
 ```
-// User requested results
+// Resultados solicitados pelo usuário
 params.results = request.query.results;
 ```
 
-Click the __Show results__ link to see the results without voting!
+Clique no link __Mostrar resultados__ para ver os resultados sem votar!
 
-_Tip: If you just cleared the log, make sure you vote again so that there are some results to show._ 🙈
+_Dica: se você acabou de limpar o log, certifique-se de votar novamente para que haja alguns resultados para mostrar._ 🙈
