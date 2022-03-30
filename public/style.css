@@ -231,7 +231,16 @@ p.error a:visited {
   padding-top:10px;
 }
 
+.footer {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto 0;
+  padding: 10px;
+  width: 100%;
+  border-top: 4px solid gray;
+}
+
 .footer .links {
-  padding: 0.5rem 1rem 1.5rem;
-  white-space: nowrap;
+  padding: 5rem -1rem ;
 }
