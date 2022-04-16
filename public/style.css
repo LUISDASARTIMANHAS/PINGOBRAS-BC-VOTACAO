@@ -232,7 +232,7 @@ p.error a:visited {
 }
 
 .footer {
-  background-color: white;
+  background-color: silver;
   display: flex;
   justify-content: space-between;
   margin: 7rem 0rem 0rem;
