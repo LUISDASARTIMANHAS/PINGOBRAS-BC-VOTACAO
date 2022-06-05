@@ -161,7 +161,6 @@ fastify.post("/reset", async (request, reply) => {
     // Temos uma chave válida e podemos limpar o log
     params.optionHistory = await db.clearHistory();
     params.true = "senha correta";
-
     // Verifique se há erros - o método retornaria um valor falso
     params.error = params.optionHistory ? null : data.errorMessage;
   }
