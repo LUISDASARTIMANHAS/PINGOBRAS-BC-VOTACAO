@@ -162,19 +162,19 @@ fastify.post("/reset", async (request, reply) => {
     params.optionHistory = await db.clearHistory();
     params.true = "senha correta";
 
-    // Check for errors - method would return false value
+    // Verifique se há erros - o método retornaria um valor falso
     params.error = params.optionHistory ? null : data.errorMessage;
   }
 
-  // Send a 401 if auth failed, 200 otherwise
+  // Envie um 401 se a autenticação falhou, 200 caso contrário
   const status = params.failed ? 401 : 200;
-  // Send an unauthorized status code if the user credentials failed
+  // Envie um código de status não autorizado se as credenciais do usuário falharem
   request.query.raw
     ? reply.status(status).send(params)
     : reply.status(status).view("/src/pages/admin.hbs", params);
 });
 
-// Run the server and report out to the logs
+// Execute o servidor e relate para os logs
 fastify.listen(process.env.PORT, '0.0.0.0', function(err, address) {
   if (err) {
     fastify.log.error(err);
