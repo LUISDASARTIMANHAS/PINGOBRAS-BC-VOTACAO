@@ -156,11 +156,11 @@ fastify.post("/reset", async (request, reply) => {
     // Auth failed, return the log data plus a failed flag
     params.failed = "senha invalida ou incorreta";
 
-    // Get the log list
+    // 'Obtenha a lista de registros
     params.optionHistory = await db.getLogs();
      } 
   else {
-    // We have a valid key and can clear the log
+    // Temos uma chave válida e podemos limpar o log
     params.optionHistory = await db.clearHistory();
     params.true = "senha correta";
 
