@@ -112,17 +112,16 @@ fastify.post("/", async (request, reply) => {
 });
 
 /**
- * Admin endpoint returns log of votes
- *
- * Send raw json or the admin handlebars page
+ * O endpoint do administrador retorna o registro de votos
+  * Envie json bruto ou a página do guiador de administração
  */
 fastify.get("/logs", async (request, reply) => {
   let params = request.query.raw ? {} : { seo: seo };
 
-  // Get the log history from the db
+  // Obtenha o histórico de log do banco de dados
   params.optionHistory = await db.getLogs();
 
-  // Let the user know if there's an error
+  // Informe o usuário se houver um erro
   params.error = params.optionHistory ? null : data.errorMessage;
 
   // Send the log list
@@ -132,18 +131,17 @@ fastify.get("/logs", async (request, reply) => {
 });
 
 /**
- * Admin endpoint to empty all logs
- *
- * Requires authorization (see setup instructions in README)
- * If auth fails, return a 401 and the log list
- * If auth is successful, empty the history
+ * Endpoint de administrador para esvaziar todos os logs
+  * Requer autorização (consulte as instruções de configuração em README)
+  * Se a autenticação falhar, retorne um 401 e a lista de logs
+  * Se a autenticação for bem sucedida, esvazie o histórico
  */
 fastify.post("/reset", async (request, reply) => {
   let params = request.query.raw ? {} : { seo: seo };
 
   /* 
-  Authenticate the user request by checking against the env key variable
-  - make sure we have a key in the env and body, and that they match
+  Autentique a solicitação do usuário verificando a variável de chave env
+   - certifique-se de que temos uma chave no env e no corpo e que eles correspondem
   */
   if (
     !request.body.key ||
@@ -153,10 +151,10 @@ fastify.post("/reset", async (request, reply) => {
   {
     console.error("auth fail");
 
-    // Auth failed, return the log data plus a failed flag
+    // Falha na autenticação, retorne os dados de log mais um sinalizador com falha
     params.failed = "senha invalida ou incorreta";
 
-    // 'Obtenha a lista de registros
+    // Obtenha a lista de registros
     params.optionHistory = await db.getLogs();
      } 
   else {
@@ -182,6 +180,6 @@ fastify.listen(process.env.PORT, '0.0.0.0', function(err, address) {
     fastify.log.error(err);
     process.exit(1);
   }
-  console.log(`Your app is listening on ${address}`);
-  fastify.log.info(`server listening on ${address}`);
+  console.log(`IP do servidor ${address}`);
+  fastify.log.info(`Servidor ligado a ${address}`);
 });
