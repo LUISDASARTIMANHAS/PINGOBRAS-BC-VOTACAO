@@ -55,18 +55,6 @@ to this section's matching END comment to see page-specific styles.
 }
 
 /* Our remix on glitch button */
-.btn--remix img {
-  margin-right: 0.5rem;
-}
-      .btnenviar{
-        background-color: purple;
-        border: none;
-        padding: 15px;
-        width: 100%;
-        border-radius: 15px;
-        color: white;
-        font-size: 15px;
-}
       .btnenviar:hover{
         background-color: green;
         cursor: pointer;
