@@ -34,7 +34,7 @@
 
       <!-- The server script returns the logs in an array -->
       <p>
-        Cada vez que você enviar uma opção através da enquete no <a href="/">Home</a> página, o aplicativo irá adicioná-lo ao log.<em>Os registros mais recentes serão mostrados (máximo 20).</em>
+        Cada vez que você enviar uma opção através da enquete no <a class="btn-votacao-footer" href="/">Home</a> página, o aplicativo irá adicioná-lo ao log.<em>Os registros mais recentes serão mostrados (máximo 20).</em>
       </p>
       <!-- Write out a table row for each entry in the log array showing choice and timestamp -->
       {{#if optionHistory.length}}
@@ -84,9 +84,17 @@
   <!-- The footer holds our remix button — you can use it for structure or cut it out ✂ -->
   <footer class="footer">
     <div class="links"></div>
-    <a href="/">Home</a>
+    <a 
+       class="btn-votacao-footer"
+       href="/">
+      Home
+    </a>
     <span class="divider">|</span>
-    <a href="/logs">Admin</a>
+    <a 
+       class="btn-votacao-footer"
+       href="/logs">
+      Admin
+    </a>
     
   </footer>
 </body>
