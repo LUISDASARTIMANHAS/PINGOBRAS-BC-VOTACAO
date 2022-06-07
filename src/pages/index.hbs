@@ -3,11 +3,6 @@
 
 <head>
 
-  <!-- 
-    This is the main Handlebars template for the site 
-    - When the user visits the homepage or submits a choice the app calls the endpoints in server.js
-    - The server script passes data in here and the Handlebars code builds it into the HTML page
-  -->
 
   <meta charset="utf-8" />
   <link rel="icon" href="https://cdn.glitch.global/b39d6a4a-0e14-4b41-930d-29d3ccd6c137/2020-11-03_12-58-10-1.jpg?v=1643163953526" />
@@ -89,7 +84,7 @@
 </head>
 
 <body>
-  <div class="">
+  <div class="site-altura">
     <div class="conteudo" role="main">
 
       <!-- This is the start of content for our page -->
@@ -134,13 +129,21 @@
         <form method="post" action="/">
           <!-- The server script returns the list of language options to offer in the poll -->
           {{#each optionNames}}
+          
           <input type="radio" id="{{this}}" name="language" value="{{this}}" required />
+          
           <label for="{{this}}">{{this}}</label>
+          
           {{/each}}
-          <br /><br />
+          
+          <br>
+          
+          <br>
+          
           <button type="submit">
             ENVIAR
           </button>
+        
         </form>
         <!-- ADD LINK FROM TODO -->
         
