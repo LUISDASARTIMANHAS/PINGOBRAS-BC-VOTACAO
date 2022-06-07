@@ -61,7 +61,7 @@ END Glitch hello-app default styles
 ******************************************************************************/
 
 .title {
-  color: #2800FF;
+  color: black;
   font-family: var(--font-tamanho-cabecalho);
   font-style: normal;
   font-weight: var(--negrito);
@@ -77,9 +77,11 @@ END Glitch hello-app default styles
 }
 
 h2 {
-  color: red;
+  color: blue;
 }
-
+p{
+  color: white;
+}
 /* Interactive image */
 .illustration:active {
   transform: translateY(5px);
