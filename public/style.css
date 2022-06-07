@@ -77,7 +77,7 @@ END Glitch hello-app default styles
 }
 
 h2 {
-  color: #2800FF;
+  color: red;
 }
 
 /* Interactive image */
@@ -91,7 +91,7 @@ p,label {
 
 /* Title h1 style */
 h1 {
-  color: #2800FF;
+  color: black;
   font-family: Arial, sans-serif;
   font-style: normal;
   font-weight: bold;
@@ -109,7 +109,7 @@ h1 {
 /* Styles for our poll form and its results */
 .poll-form,
 .poll-results {
-  background-color: #FFF3FC;
+  background-color: white;
   padding: 0 16px 16px 16px;
   border-radius: 8px;
 }
@@ -131,7 +131,7 @@ label {
 table {
   text-align: left;
   border-collapse: collapse;
-  background-color: #FFF3FC;
+  background-color: gray;
 }
 td,
 th {
@@ -145,7 +145,8 @@ p a {
 p.error,
 p.error a:link,
 p.error a:visited {
-  color: #2800FF;
+  color: red;
+  font-size: 30px;
 }
 .results {
   padding-top:10px;
