@@ -129,13 +129,21 @@
         <form method="post" action="/">
           <!-- The server script returns the list of language options to offer in the poll -->
           {{#each optionNames}}
+          
           <input type="radio" id="{{this}}" name="language" value="{{this}}" required />
+          
           <label for="{{this}}">{{this}}</label>
+          
           {{/each}}
-          <br /><br />
+          
+          <br>
+          
+          <br>
+          
           <button type="submit">
             ENVIAR
           </button>
+        
         </form>
         <!-- ADD LINK FROM TODO -->
         

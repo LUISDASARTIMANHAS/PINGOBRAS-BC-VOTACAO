@@ -115,6 +115,7 @@ fastify.post("/", async (request, reply) => {
  * O endpoint do administrador retorna o registro de votos
   * Envie json bruto ou a página do guiador de administração
  */
+
 fastify.get("/logs", async (request, reply) => {
   let params = request.query.raw ? {} : { seo: seo };
 
