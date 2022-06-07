@@ -53,29 +53,6 @@ to this section's matching END comment to see page-specific styles.
   src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
     format("opentype");
 }
-
-/* Our remix on glitch button */
-      .btn-enviar-votacao:hover{
-        background-color: green;
-        cursor: pointer;
-        }
-      .btn-voltar{
-        background-color: white;
-        left:100%;
-        border: 5px solid black;
-        padding: 15px;
-        width: 100%;
-        border-radius: 15px;
-        color: white;
-        font-size: 15px;
-}
-      .btn-voltar:hover{
-        background-color: green;
-        cursor: pointer;
-        }
-.divider {
-  padding: 0 1rem;
-}
 /******************************************************************************
 END Glitch hello-app default styles
 ******************************************************************************/
@@ -115,20 +92,6 @@ END Glitch hello-app default styles
   max-width: 100%;
   max-height: var(--image-max-width);
   margin-top: var(--image-margin);
-}
-
-/* Button - Add it from the README instructions */
-button,
-input {
-  font-family: inherit;
-  font-size: 100%;
-  background: #FFFFFF;
-  box-sizing: border-box;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  transition: 500ms;
-  border: 3px solid black;
-  
 }
 /* Subheading */
 h2 {
