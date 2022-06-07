@@ -55,11 +55,11 @@ to this section's matching END comment to see page-specific styles.
 }
 
 /* Our remix on glitch button */
-      .btnenviar:hover{
+      .btn-enviar-votacao:hover{
         background-color: green;
         cursor: pointer;
         }
-      .btnvoltar{
+      .btn-voltar{
         background-color: white;
         left:100%;
         border: 5px solid black;
@@ -69,7 +69,7 @@ to this section's matching END comment to see page-specific styles.
         color: white;
         font-size: 15px;
 }
-      .btnvoltar:hover{
+      .btn-voltar:hover{
         background-color: green;
         cursor: pointer;
         }
@@ -80,11 +80,6 @@ to this section's matching END comment to see page-specific styles.
 END Glitch hello-app default styles
 ******************************************************************************/
 
-body{
-      font-family: Arial, helvetica, sans-serif;
-       background-image: linear-gradient(45deg, cyan, purple);
-       width: 100%;
-     }
 /* Page structure */
 .wrapper {
   min-height: var(--wrapper-altura);
