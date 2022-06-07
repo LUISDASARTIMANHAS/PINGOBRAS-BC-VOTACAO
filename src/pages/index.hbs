@@ -126,15 +126,23 @@
           Qual codigo voce gosta mais?
         </p>
         <!-- Call the server post endpoint when the user submits an option in the poll -->
-        <form method="post" action="/">
+          <form method="post" action="/">
           <!-- The server script returns the list of language options to offer in the poll -->
-          {{#each optionNames}}
           
-          <input type="radio" id="{{this}}" name="language" value="{{this}}" required />
+          <input type="radio" id="Windows" name="language" value="Windows" required="">
           
-          <label for="{{this}}">{{this}}</label>
+          <label for="Windows">Windows</label>
           
-          {{/each}}
+          
+          <input type="radio" id="mac" name="language" value="mac" required="">
+          
+          <label for="mac">mac</label>
+          
+          
+          <input type="radio" id="iphone" name="language" value="iphone" required="">
+          
+          <label for="iphone">iphone</label>
+          
           
           <br>
           
