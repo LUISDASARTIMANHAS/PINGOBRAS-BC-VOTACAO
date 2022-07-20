@@ -148,10 +148,10 @@ fastify.post("/reset", async (request, reply) => {
     !request.body.key ||
     request.body.key.length < 4 ||
     !process.env.ADMIN_KEY ||
-    request.body.key !== process.env.ADMIN_KEY) 
+    request.body.key !== process.env.ADMIN_KEY)
   {
     console.error("auth fail");
-
+    console.log(process.env.ADMIN_KEY)
     // Falha na autenticação, retorne os dados de log mais um sinalizador com falha
     params.failed = "senha invalida ou incorreta";
 
