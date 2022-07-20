@@ -150,9 +150,7 @@ fastify.post("/reset", async (request, reply) => {
     !process.env.ADMIN_KEY ||
     request.body.key !== process.env.ADMIN_KEY)
   {
-    console.error("auth fail");
-    console.log(process.env.ADMIN_KEY)
-    // Falha na autenticação, retorne os dados de log mais um sinalizador com falha
+    console.error("auth fail");    // Falha na autenticação, retorne os dados de log mais um sinalizador com falha
     params.failed = "senha invalida ou incorreta";
 
     // Obtenha a lista de registros
