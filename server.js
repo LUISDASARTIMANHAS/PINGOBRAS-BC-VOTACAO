@@ -14,23 +14,23 @@ const path = require("path");
 // Require the fastify framework and instantiate it
 const fastify = require("fastify")({
   // Set this to true for detailed logging:
-  logger: false
+  logger: false,
 });
 
 // Setup our static files
-fastify.register(require("fastify-static"), {
+fastify.register(require("@fastify/static"), {
   root: path.join(__dirname, "public"),
-  prefix: "/" // optional: default '/'
+  prefix: "/", // optional: default '/'
 });
 
-// fastify-formbody lets us parse incoming forms
-fastify.register(require("fastify-formbody"));
+// Formbody lets us parse incoming forms
+fastify.register(require("@fastify/formbody"));
 
-// point-of-view is a templating manager for fastify
-fastify.register(require("point-of-view"), {
+// View is a templating manager for fastify
+fastify.register(require("@fastify/view"), {
   engine: {
-    handlebars: require("handlebars")
-  }
+    handlebars: require("handlebars"),
+  },
 });
 
 // Load and parse SEO data
@@ -61,8 +61,8 @@ fastify.get("/", async (request, reply) => {
   // Get the available choices from the database
   const options = await db.getOptions();
   if (options) {
-    params.optionNames = options.map(choice => choice.language);
-    params.optionCounts = options.map(choice => choice.picks);
+    params.optionNames = options.map((choice) => choice.language);
+    params.optionCounts = options.map((choice) => choice.picks);
   }
   // Let the user know if there was a db error
   else params.error = data.errorMessage;
@@ -74,7 +74,7 @@ fastify.get("/", async (request, reply) => {
   // ADD PARAMS FROM TODO HERE
 
   // Send the page options or raw JSON data if the client requested it
-  request.query.raw
+  return request.query.raw
     ? reply.send(params)
     : reply.view("/src/pages/index.hbs", params);
 });
@@ -86,7 +86,7 @@ fastify.get("/", async (request, reply) => {
  * Send vote to database helper
  * Return updated list of votes
  */
-fastify.post("/", async (request, reply) => { 
+fastify.post("/", async (request, reply) => {
   // We only send seo if the client is requesting the front-end ui
   let params = request.query.raw ? {} : { seo: seo };
 
@@ -99,85 +99,90 @@ fastify.post("/", async (request, reply) => {
     options = await db.processVote(request.body.language);
     if (options) {
       // We send the choices and numbers in parallel arrays
-      params.optionNames = options.map(choice => choice.language);
-      params.optionCounts = options.map(choice => choice.picks);
+      params.optionNames = options.map((choice) => choice.language);
+      params.optionCounts = options.map((choice) => choice.picks);
     }
   }
   params.error = options ? null : data.errorMessage;
 
   // Return the info to the client
-  request.query.raw
+  return request.query.raw
     ? reply.send(params)
     : reply.view("/src/pages/index.hbs", params);
 });
 
 /**
- * O endpoint do administrador retorna o registro de votos
-  * Envie json bruto ou a página do guiador de administração
+ * Admin endpoint returns log of votes
+ *
+ * Send raw json or the admin handlebars page
  */
-
 fastify.get("/logs", async (request, reply) => {
   let params = request.query.raw ? {} : { seo: seo };
 
-  // Obtenha o histórico de log do banco de dados
+  // Get the log history from the db
   params.optionHistory = await db.getLogs();
 
-  // Informe o usuário se houver um erro
+  // Let the user know if there's an error
   params.error = params.optionHistory ? null : data.errorMessage;
 
   // Send the log list
-  request.query.raw
+  return request.query.raw
     ? reply.send(params)
     : reply.view("/src/pages/admin.hbs", params);
 });
 
 /**
- * Endpoint de administrador para esvaziar todos os logs
-  * Requer autorização (consulte as instruções de configuração em README)
-  * Se a autenticação falhar, retorne um 401 e a lista de logs
-  * Se a autenticação for bem sucedida, esvazie o histórico
+ * Admin endpoint to empty all logs
+ *
+ * Requires authorization (see setup instructions in README)
+ * If auth fails, return a 401 and the log list
+ * If auth is successful, empty the history
  */
 fastify.post("/reset", async (request, reply) => {
   let params = request.query.raw ? {} : { seo: seo };
 
   /* 
-  Autentique a solicitação do usuário verificando a variável de chave env
-   - certifique-se de que temos uma chave no env e no corpo e que eles correspondem
+  Authenticate the user request by checking against the env key variable
+  - make sure we have a key in the env and body, and that they match
   */
   if (
     !request.body.key ||
-    request.body.key.length < 4 ||
+    request.body.key.length < 1 ||
     !process.env.ADMIN_KEY ||
-    request.body.key !== process.env.ADMIN_KEY)
-  {
-    console.error("auth fail");    // Falha na autenticação, retorne os dados de log mais um sinalizador com falha
-    params.failed = "senha invalida ou incorreta";
+    request.body.key !== process.env.ADMIN_KEY
+  ) {
+    console.error("Auth fail");
 
-    // Obtenha a lista de registros
+    // Auth failed, return the log data plus a failed flag
+    params.failed = "You entered invalid credentials!";
+
+    // Get the log list
     params.optionHistory = await db.getLogs();
-     } 
-  else {
-    // Temos uma chave válida e podemos limpar o log
+  } else {
+    // We have a valid key and can clear the log
     params.optionHistory = await db.clearHistory();
-    params.true = "senha correta";
-    // Verifique se há erros - o método retornaria um valor falso
+
+    // Check for errors - method would return false value
     params.error = params.optionHistory ? null : data.errorMessage;
   }
 
-  // Envie um 401 se a autenticação falhou, 200 caso contrário
+  // Send a 401 if auth failed, 200 otherwise
   const status = params.failed ? 401 : 200;
-  // Envie um código de status não autorizado se as credenciais do usuário falharem
-  request.query.raw
+  // Send an unauthorized status code if the user credentials failed
+  return request.query.raw
     ? reply.status(status).send(params)
     : reply.status(status).view("/src/pages/admin.hbs", params);
 });
 
-// Execute o servidor e relate para os logs
-fastify.listen(process.env.PORT, '0.0.0.0', function(err, address) {
-  if (err) {
-    fastify.log.error(err);
-    process.exit(1);
+// Run the server and report out to the logs
+fastify.listen(
+  { port: process.env.PORT, host: "9.6.4.5" },
+  function (err, address) {
+    if (err) {
+      fastify.log.error(err);
+      process.exit(1);
+    }
+    console.log(`Your app is listening on ${address}`);
+    fastify.log.info(`server listening on ${address}`);
   }
-  console.log(`IP do servidor ${address}`);
-  fastify.log.info(`Servidor ligado a ${address}`);
-});
+);
