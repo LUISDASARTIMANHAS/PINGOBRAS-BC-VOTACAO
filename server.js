@@ -176,7 +176,7 @@ fastify.post("/reset", async (request, reply) => {
 
 // Run the server and report out to the logs
 fastify.listen(
-  { port: process.env.PORT, host: "9.6.4.5" },
+  { port: process.env.PORT, host: "0.0.0.0" },
   function (err, address) {
     if (err) {
       fastify.log.error(err);
