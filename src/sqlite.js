@@ -18,8 +18,7 @@ let db;
 We're using the sqlite wrapper so that we can make async / await connections
 - https://www.npmjs.com/package/sqlite
 */
-dbWrapper
-  .open({
+dbWrapper.open({
     filename: dbFile,
     driver: sqlite3.Database
   })
