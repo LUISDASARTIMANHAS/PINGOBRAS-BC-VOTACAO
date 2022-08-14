@@ -1,32 +1,30 @@
 # Hello SQLite!
 
-This project includes a [Node.js](https://nodejs.org/en/about/) server script that uses a persistent [SQLite](https://www.sqlite.org) database. The app also includes a front-end with two web pages that connect to the database using the server API. 📊
+Este projeto inclui um script de servidor [Node.js](https://nodejs.org/en/about/) que usa um banco de dados [SQLite](https://www.sqlite.org) persistente. O aplicativo também inclui um front-end com duas páginas da Web que se conectam ao banco de dados usando a API do servidor. 📊
 
-The home page presents the user with a poll where they can choose an option, then the page presents the results in a chart. The admin page displays the log of past choices and allows the user to clear it by supplying an admin key (you can set this up by following the steps in `TODO.md`). 🔒
-
+A página inicial apresenta ao usuário uma enquete onde ele pode escolher uma opção e, em seguida, a página apresenta os resultados em um gráfico. A página de administração exibe o log das escolhas anteriores e permite que o usuário o limpe fornecendo uma chave de administrador (você pode configurar isso seguindo os passos em `TODO.md`). 🔒
 ## Prerequisites
 
-To get best use out of this project you'll ideally be familiar with JavaScript and have a little Node.js experience–check out [Hello Node](https://glitch.com/~glitch-hello-node) if you haven't already!
+Para obter o melhor uso deste projeto, você deve estar familiarizado com JavaScript e ter um pouco de experiência em Node.js – confira [Hello Node](https://glitch.com/~glitch-hello-node) se você tiver já não!
+## O que há neste projeto?
 
-## What's in this project?
+← `README.md`: Esse é este arquivo, onde você pode dizer às pessoas o que seu site legal faz e como você o construiu.
 
-← `README.md`: That’s this file, where you can tell people what your cool website does and how you built it.
+← `package.json`: Os pacotes NPM para as dependências do seu projeto.
 
-← `package.json`: The NPM packages for your project's dependencies.
+← `.env`: O ambiente é limpo quando você remixa inicialmente o projeto, mas você adicionará um novo valor de variável env quando seguir os passos em `TODO.md` para configurar uma chave admin.
 
-← `.env`: The environment is cleared when you initially remix the project, but you will add a new env variable value when you follow the steps in `TODO.md` to set up an admin key.
+### Servidor e banco de dados
 
-### Server and database
+← `server.js`: O script do servidor Node.js para seu novo site. O JavaScript define os endpoints na API do site. A API processa solicitações, conecta-se ao banco de dados usando o script `sqlite` em `src` e envia informações de volta ao cliente (as páginas da web que compõem a interface do usuário do aplicativo, construídas usando os modelos Handlebars em `src/pages` ).
 
-← `server.js`: The Node.js server script for your new site. The JavaScript defines the endpoints in the site API. The API processes requests, connects to the database using the `sqlite` script in `src`, and sends info back to the client (the web pages that make up the app user interface, built using the Handlebars templates in `src/pages`).
+← `/src/sqlite.js`: O script do banco de dados trata da configuração e conexão com o banco de dados SQLite. Os endpoints da API `server.js` chamam as funções no script do banco de dados para gerenciar os dados.
 
-← `/src/sqlite.js`: The database script handles setting up and connecting to the SQLite database. The `server.js` API endpoints call the functions in the database script to manage the data.
+← `/src/data.json`: O arquivo de configuração de dados inclui o script do gerenciador de banco de dados–`server.js` lê a propriedade `database` para importar o script correto.
 
-← `/src/data.json`: The data config file includes the database manager script–`server.js` reads the `database` property to import the correct script.
+Quando o aplicativo é executado, os scripts criam o banco de dados:
 
-When the app runs, the scripts build the database:
-
-← `.data/choices.db`: Your database is created and placed in the `.data` folder, a hidden directory whose contents aren’t copied when a project is remixed. You can see the contents of `.data` in the console by selecting __Tools__ >  __Logs__.
+← `.data/choices.db`: Seu banco de dados é criado e colocado na pasta `.data`, um diretório oculto cujo conteúdo não é copiado quando um projeto é remixado. Você pode ver o conteúdo de `.data` no console selecionando __Tools__ > __Logs__.
 
 ### User interface
 
