@@ -153,10 +153,9 @@ p.error a:visited {
 .results {
   padding-top:10px;
 }
-
-.footer {
-  position: absolute;
-  background-color: silver;
-  padding: 3px;
-  width: 100%;
+.footer a{
+ display:inline-block;
+}
+.footer{
+  
 }
