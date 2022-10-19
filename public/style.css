@@ -171,7 +171,7 @@ p.error a:visited {
  font-size:18px;
   
 }
-.send-feeedback:hover{
+.send-feedback:hover{
   box-shadow:0px 0px 20px 13px purple;
-
+  cursor: pointer;
 }
