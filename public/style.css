@@ -80,7 +80,7 @@ h2 {
   color: blue;
 }
 p{
-  color: white;
+  color: black;
 }
 /* Interactive image */
 .illustration:active {
@@ -114,6 +114,7 @@ h1 {
   background-color: white;
   padding: 0 16px 16px 16px;
   border-radius: 8px;
+  color: red;
 }
 .poll-form button:hover {
   cursor: pointer;
@@ -157,5 +158,6 @@ p.error a:visited {
  display:inline-block;
 }
 .footer{
-  
+  background-image: linear-gradient(45deg,green,yellow,blue);
 }
+.send-feedback
