@@ -157,6 +157,19 @@ p.error a:visited {
 .footer{
   background-image: linear-gradient(45deg,green,yellow,blue);
 }
+.clearDb{
+    background-image: linear-gradient(45deg,red,orangered);
+  width: 50%;
+  border: 5px solid black;
+  border-radius: 25px;
+  cursor: auto;
+  padding-top:5px;
+  padding-bottom:5px;
+  font-style:italic;
+ text-transform:capitalize;
+ text-shadow:rgb(255, 255, 255) 1px 1px 0px, rgb(170, 170, 170) 2px 2px 0px;
+ font-size:18px;
+}
 .send-feedback{
   background-image: linear-gradient(45deg,blue,purple);
   width: 50%;
