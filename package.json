@@ -10,7 +10,7 @@
     "fastify": "^4.0.3",
     "handlebars": "^4.7.7",
     "sqlite": "^4.1.1",
-    "sqlite3": "^5.0.8",
+    "sqlite3": "^5.1.5",
     "@fastify/view": "^7.0.0",
     "@fastify/static": "^6.4.0",
     "@fastify/formbody": "^7.0.1"
