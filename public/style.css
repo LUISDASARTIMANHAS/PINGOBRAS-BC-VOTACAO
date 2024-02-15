@@ -10,7 +10,7 @@ to this section's matching END comment to see page-specific styles.
 :root {
   --cor-padrao: linear-gradient(45deg, cyan, purple);
   --color-text-main: #000000;
-  --color-primary: #FFFF00;
+  --color-primary: #ffff00;
   --wrapper-altura: 87vh;
   --image-max-largura: 400px;
   --image-margin: 1rem;
@@ -26,17 +26,20 @@ to this section's matching END comment to see page-specific styles.
   --espaco-em-branco: nowrap;
   --X: 0px;
   --Y: 390px;
- 
+
   --height: "altuta";
   --Weight: "peso";
   --width: "largura";
-  --white-space: "espaco em branco";   
+  --white-space: "espaco em branco";
 }
 
 /* Basic page style resets */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 [hidden] {
   display: none !important;
 }
@@ -44,24 +47,138 @@ to this section's matching END comment to see page-specific styles.
 /* Import fonts */
 @font-face {
   font-family: HK Grotesk;
-  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
-    format("opentype");
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027") format("opentype");
 }
+
 @font-face {
   font-family: HK Grotesk;
   font-weight: bold;
-  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
-    format("opentype");
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437") format("opentype");
 }
+
+/* Our remix on glitch button */
+.btn--remix img {
+  margin-right: 0.5rem;
+}
+
+.btnenviar {
+  background-color: purple;
+  border: none;
+  padding: 15px;
+  width: 100%;
+  border-radius: 15px;
+  color: white;
+  font-size: 15px;
+}
+
+.btnenviar:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
+.btnvoltar {
+  background-color: white;
+  left: 100%;
+  border: 5px solid black;
+  padding: 15px;
+  width: 100%;
+  border-radius: 15px;
+  color: white;
+  font-size: 15px;
+}
+
+.btnvoltar:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
 .divider {
   padding: 0 1rem;
 }
+
 /******************************************************************************
 END Glitch hello-app default styles
 ******************************************************************************/
 
-.title {
+body {
+  font-family: Arial, helvetica, sans-serif;
+  background-image: linear-gradient(45deg, cyan, purple);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 75vh;
+}
+
+main tela {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #333333;
+  color: snow;
+  width: 75%;
+  gap: 10px;
+  padding: 10px;
+}
+
+main .poll-form {
+  min-width: 75%;
+  overflow: hidden;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between !important;
+  flex-wrap: wrap;
+  background-color: #fff3fc;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+/* Th */
+main table {
   color: black;
+}
+
+/* Th */
+table th,
+table td {
+  border-width: 2px;
+  border-color: silver;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 100px;
+}
+
+/* Instructions */
+.instructions {
+  margin: 1rem auto 0;
+}
+
+/* Very light scaling for our illustration */
+.title {
+  color: #2800ff;
   font-family: var(--font-tamanho-cabecalho);
   font-style: normal;
   font-weight: var(--negrito);
@@ -70,31 +187,53 @@ END Glitch hello-app default styles
   margin: 0;
 }
 
+/* Very light scaling for our illustration */
 .illustration {
   max-width: 100%;
   max-height: var(--image-max-width);
   margin-top: var(--image-margin);
 }
 
+/* Button - Add it from the README instructions */
+button,
+input {
+  font-family: inherit;
+  font-size: 100%;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  transition: 500ms;
+  border: 3px solid black;
+}
+
+/* Subheading */
 h2 {
-  color: blue;
+  color: #3498db;
 }
-p{
-  color: black;
-}
+
 /* Interactive image */
 .illustration:active {
   transform: translateY(5px);
 }
 
-p,label {
+/* Button dip
+- Toggling this class on and off will move it down and up again
+- The button transition property above determines the speed of the translate (500ms)
+*/
+.dipped {
+  transform: translateY(5px);
+}
+
+p,
+label {
   font-size: 1.25rem;
 }
 
 /* Title h1 style */
 h1 {
-  color: black;
-  font-family: Arial, sans-serif;
+  color: #3498db;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 100px;
@@ -108,17 +247,13 @@ h1 {
   justify-content: flex-end;
 }
 
-/* Styles for our poll form and its results */
-.poll-form,
-.poll-results {
-  background-color: white;
-  padding: 0 16px 16px 16px;
-  border-radius: 8px;
-  color: red;
-  text-align:center;
+.poll-form button:hover {
+  cursor: pointer;
+  box-shadow: -8px 4px 20px var(--color-primary);
 }
+
 label {
-  color: black;
+  color: #000000;
   font-weight: bold;
 }
 
@@ -129,70 +264,48 @@ label {
 
 /* Admin page */
 table {
+  text-align: left;
   border-collapse: collapse;
-  background-color: gray;
-  text-transform:capitalize;
- text-align:center;
- font-style:italic;
- border-width:5px;
- border-style:solid;
- border-color:#000000;
- overflow:hidden;
- display:block;
- width: 50%;
+  background-color: #fff3fc;
 }
+
 td,
 th {
-  border: 2px solid white;
+  border: 2px solid #ffffff;
   padding: 0.5rem;
 }
+
 p a {
   text-decoration: none;
   font-weight: bold;
 }
+
 p.error,
 p.error a:link,
 p.error a:visited {
   color: red;
-  font-size: 30px;
 }
+
 .results {
-  padding-top:10px;
+  padding-top: 10px;
 }
-.footer a{
- display:inline-block;
+
+/* Navigation grid */
+.footer {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  width: 100%;
+  border: 4px solid gray;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.footer{
-  background-image: linear-gradient(45deg,green,yellow,blue);
+
+.footer .links {
+  padding: 5rem -1rem;
 }
-.clearDb{
-    background-image: linear-gradient(45deg,red,orangered);
-  width: 50%;
-  border: 5px solid black;
-  border-radius: 25px;
-  cursor: auto;
-  padding-top:5px;
-  padding-bottom:5px;
-  font-style:italic;
- text-transform:capitalize;
- text-shadow:rgb(255, 255, 255) 1px 1px 0px, rgb(170, 170, 170) 2px 2px 0px;
- font-size:18px;
-}
-.send-feedback{
-  background-image: linear-gradient(45deg,blue,purple);
-  width: 50%;
-  border: 5px solid black;
-  border-radius: 25px;
-  cursor: auto;
-  padding-top:5px;
-  padding-bottom:5px;
-  font-style:italic;
- text-transform:capitalize;
- text-shadow:rgb(255, 255, 255) 1px 1px 0px, rgb(170, 170, 170) 2px 2px 0px;
- font-size:18px;
-  
-}
-.send-feedback:hover{
-  box-shadow:0px 0px 20px 13px purple;
-  cursor: pointer;
+
+.notAllowed {
+  cursor: not-allowed;
 }

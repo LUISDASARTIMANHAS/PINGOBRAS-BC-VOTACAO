@@ -29,7 +29,6 @@
     /*
     The chart uses chart.js - try tweaking the config!
     https://www.chartjs.org/docs/3.0.2/charts/doughnut.html
-    
     We pass the choices and picks arrays from the page when the server script returns them
     */
     function showChart(choices, picks) {
@@ -84,20 +83,17 @@
 </head>
 
 <body>
-  <div class="site-altura">
-    <div class="conteudo" role="main">
+  <main>
 
       <!-- This is the start of content for our page -->
-      
-      
       {{#if error}}
       <p class="error">
         {{error}}
       </p>
-      
+
       {{else}}
       <!-- Server returns a flag when the user has submitted a choice and we show the results -->
-      
+
       {{#if results}}
       <h2>
         Resultados
@@ -114,7 +110,7 @@
           </script>
         </p>
         <!-- If the user hasn't already made a choice we show the poll -->
-      </div> 
+      </div>
       {{else}}
 
       <div class="poll-form">
@@ -129,24 +125,14 @@
         <form method="post" action="/">
           <!-- The server script returns the list of language options to offer in the poll -->
           {{#each optionNames}}
-          
           <input type="radio" id="{{this}}" name="language" value="{{this}}" required />
-          
           <label for="{{this}}">{{this}}</label>
-          
           {{/each}}
-          
-          <br>
-          
-          <br>
-          
           <button class="send-feedback" type="submit">
             ENVIAR
           </button>
-        
         </form>
         <!-- ADD LINK FROM TODO -->
-        
       </div>
       {{/if}}
       {{/if}}
@@ -157,29 +143,19 @@
     </div>
   </div>
   <!-- The footer holds our remix button — you can use it for structure or cut it out ✂ -->
+  </main>
   <footer class="footer">
-    
-    <div class="links"></div>
-    
     <a
-       class="btn-votacao-footer"
-       href="/">
+      class="btn-votacao-footer"
+      href="/">
       Home
     </a>
-    
     <span class="divider">|</span>
-    
-    <a 
-       class="btn-votacao-footer"
-       href="/logs">
+    <a
+      class="btn-votacao-footer"
+      href="/logs">
       Admin
     </a>
-    
   </footer>
 </body>
-
-  <link rel="stylesheet" href="https://pingobras.glitch.me/css/style.css" />
-  <link rel="stylesheet" href="https://pingobras.glitch.me/css/btn.css" />
-    <script src="https://pingobras.glitch.me/js/script.js" defer></script>
-    <script src="https://pingobras.glitch.me/js/STORAGE.js" defer></script>
 </html>

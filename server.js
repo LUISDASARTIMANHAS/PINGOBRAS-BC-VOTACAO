@@ -154,7 +154,7 @@ fastify.post("/reset", async (request, reply) => {
     console.error("Auth fail");
 
     // Auth failed, return the log data plus a failed flag
-    params.failed = "You entered invalid credentials!";
+    params.failed = "Você inseriu credenciais inválidas!";
 
     // Get the log list
     params.optionHistory = await db.getLogs();

@@ -21,9 +21,7 @@
 </head>
 
 <body>
-  <div class="site-altura">
-    <div class="conteudo" role="main">
-
+  <main>
       <!-- This is the start of content for our page -->
       <tela>
       <h1>Logs</h1>
@@ -67,9 +65,7 @@
         </h2>
         <p>
           Limpe o histórico somente se tiver certeza absoluta! Isso não pode ser desfeito.
-        
         </p>
-        
         <!-- Server returns a failed flag if the submitted key doesn't match -->
         {{#if failed}}
         <p class="error">
@@ -81,27 +77,20 @@
       </form>
       {{/if}}
     </tela>
-        
-        </div></div>
+  </main>
   <!-- The footer holds our remix button — you can use it for structure or cut it out ✂ -->
   <footer class="footer">
-    <div class="links"></div>
-    <a 
-       class="btn-votacao-footer"
-       href="/">
+    <a
+      class="btn-votacao-footer"
+      href="/">
       Home
     </a>
     <span class="divider">|</span>
-    <a 
-       class="btn-votacao-footer"
-       href="/logs">
+    <a
+      class="btn-votacao-footer"
+      href="/logs">
       Admin
     </a>
-    
   </footer>
 </body>
-<link rel="stylesheet" href="https://pingobras.glitch.me/css/style.css" />
-  <link rel="stylesheet" href="https://pingobras.glitch.me/css/btn.css" />
-    <script src="https://pingobras.glitch.me/js/script.js" defer></script>
-    <script src="https://pingobras.glitch.me/js/STORAGE.js" defer></script>
 </html>

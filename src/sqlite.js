@@ -18,7 +18,8 @@ let db;
 We're using the sqlite wrapper so that we can make async / await connections
 - https://www.npmjs.com/package/sqlite
 */
-dbWrapper.open({
+dbWrapper
+  .open({
     filename: dbFile,
     driver: sqlite3.Database
   })
@@ -36,7 +37,7 @@ dbWrapper.open({
 
         // Add default choices to table
         await db.run(
-          "INSERT INTO Choices (language, picks) VALUES ('html', 0), ('JavaScript', 0), ('CSS', 0)"
+          "INSERT INTO Choices (language, picks) VALUES ('HTML', 0), ('JavaScript', 0), ('CSS', 0)"
         );
 
         // Log can start empty - we'll insert a new record whenever the user chooses a poll option
@@ -45,7 +46,7 @@ dbWrapper.open({
         );
       } else {
         // We have a database already - write Choices records to log for info
-        // console.log(await db.all("SELECT * from Choices"));
+        console.log(await db.all("SELECT * from Choices"));
 
         //If you need to remove a table from the database use this syntax
         //db.run("DROP TABLE Logs"); //will fail if the table doesn't exist
