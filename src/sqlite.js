@@ -45,7 +45,7 @@ dbWrapper.open({
         );
       } else {
         // We have a database already - write Choices records to log for info
-        console.log(await db.all("SELECT * from Choices"));
+        // console.log(await db.all("SELECT * from Choices"));
 
         //If you need to remove a table from the database use this syntax
         //db.run("DROP TABLE Logs"); //will fail if the table doesn't exist

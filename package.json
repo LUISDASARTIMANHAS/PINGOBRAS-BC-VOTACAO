@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "start:dev": "nodemon server.js",
-    "autoInstall": "npm install"
+    "autoInstall": "npm install",
+    "fix":"npm audit fix"
   },
   "dependencies": {
     "@fastify/formbody": "^7.0.1",
