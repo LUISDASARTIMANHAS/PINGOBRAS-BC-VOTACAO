@@ -110,7 +110,8 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
-  height: 100vh;
+  min-height:100vh;
+  overflow:auto;
 }
 
 main {
@@ -124,6 +125,7 @@ main {
 }
 
 main tela {
+  margin: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

@@ -10,7 +10,8 @@
 // Utilities we need
 const fs = require("fs");
 const path = require("path");
-
+const env = require("dotenv");
+env.config()
 // Require the fastify framework and instantiate it
 const fastify = require("fastify")({
   // Set this to true for detailed logging:
@@ -151,7 +152,9 @@ fastify.post("/reset", async (request, reply) => {
     !process.env.ADMIN_KEY ||
     request.body.key !== process.env.ADMIN_KEY
   ) {
+    console.error(`Auth ${request.body.key} == ${process.env.ADMIN_KEY}`);
     console.error("Auth fail");
+    fastify.log.error("Auth fail");
 
     // Auth failed, return the log data plus a failed flag
     params.failed = "Você inseriu credenciais inválidas!";
@@ -161,7 +164,8 @@ fastify.post("/reset", async (request, reply) => {
   } else {
     // We have a valid key and can clear the log
     params.optionHistory = await db.clearHistory();
-
+    console.log("Limpando banco de dados!!");
+    fastify.log.info("Limpando banco de dados!!");
     // Check for errors - method would return false value
     params.error = params.optionHistory ? null : data.errorMessage;
   }
